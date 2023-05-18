@@ -50,21 +50,20 @@ public class DisjointSetForest implements DisjointSetDataStructure {
 		} else if (arr[rootA].rank > arr[rootB].rank) {
 			arr[rootB].parent = arr[rootA].parent;
 		} else {
-			arr[rootB].parent = arr[rootA].parent;
-			arr[rootA].rank++;
+			arr[rootA].parent = arr[rootB].parent;
+			arr[rootB].rank++;
 		}
 
 		return true; // union successful
 	}
 
-
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
+		StringBuilder sb = new StringBuilder("Disjoint sets as forest:\n");
 		for (int i = 0; i < arr.length; i++) {
 			sb.append(String.format("%d -> %d%n", i, arr[i].parent));
 		}
-		return sb.toString();
+		return sb.toString().substring(0, sb.length() - 1);
 	}
 
 }
